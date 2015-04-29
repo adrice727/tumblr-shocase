@@ -4,13 +4,23 @@
   <meta charset="UTF-8">
   <title>Tumblr Shocase</title>
 
-  <link href="/css/style.css" type="text/css" rel="stylesheet/css">
-  <link href="/bower_components/fontawesome/css/font-awesome-min.css" type="text/css" rel="stylesheet/css">
+  <link href='css/style.css' rel='stylesheet' type='text/css'>
+  <link href="bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet" type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
 
 </head>
-<body>
+<body ng-controller="MainCtrl">
+
 
 <div class="banner">Tumblr Shocase</div>
+
+<div class="search-container">
+  <h2>Enter the name of tumblr</h2>
+  <form ng-submit="findPosts()">
+   <input type="text" ng-model="name" placeholder="'tumblr-quotes'">
+   <button>Find Posts</button>
+</form>
+</div>
 
 
 <!-- Bower Components -->
@@ -18,8 +28,9 @@
 <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
 
 <!-- JavaScript -->
-<script src="controllers/controller-main.js"></script>
+<script src="app.js"></script>
 <script src="services/service-api.js"></script>
+<script src="controllers/controller-main.js"></script>
   
 </body>
 </html>

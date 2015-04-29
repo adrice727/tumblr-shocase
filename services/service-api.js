@@ -1,5 +1,5 @@
 angular.module('tumblr')
-  .factory('ApiService', function ($scope, $q) {
+  .factory('ApiService', function ($http, $q) {
 
     var ApiService = {};;
 
@@ -22,6 +22,6 @@ angular.module('tumblr')
 
     }
 
-
+    return ApiService;
 
   });

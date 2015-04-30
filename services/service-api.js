@@ -13,7 +13,6 @@ angular.module('tumblr')
           deferred.resolve(data);
         })
         .error(function(error){
-          console.log('xoxoxo', error);
           deferred.reject(error);
         })
 
@@ -22,8 +21,8 @@ angular.module('tumblr')
 
     function getEndpoint(data){
 
-      var baseUrl = 'http://' + data.blog + '.tumblr.com/api/read/json?&callback=JSON_CALLBACK';
-      var params = '&filter=text&num=9&start=' + data.offset;
+      var baseUrl = 'http://' + data.blog + '.tumblr.com/api/read/json';
+      var params = '?&callback=JSON_CALLBACK&filter=text&num=9&start=' + data.offset;
 
       return baseUrl + params;
     }

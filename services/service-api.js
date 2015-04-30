@@ -1,18 +1,28 @@
 angular.module('tumblr')
   .factory('ApiService', function ($http, $q) {
 
-    var ApiService = {};;
+    var ApiService = {};
 
-    ApiService.fetchPosts = function(term){
+    function getEndpoint(data){
+
+      var base = 'http://api.tumblr.com/v2/blog/';
+      var blog =  data.blog + '.tumblr.com'
+      var params = '/posts?&callback=JSON_CALLBACK' + '&limit=15&offset=' + data.offset;
+      var key = '&api_key=0dNpXFzkovKe7qBnN0hNoVaU7ArLUnCFARNALGgWv36NzxOQAS'
+
+      return base + blog + params + key;
+
+    }
+
+    ApiService.fetchPosts = function(params){
 
       var deferred = $q.defer();
 
-      var start = 0; //offset
-      var endpoint = 'http://' + term + '.tumblr.com/api/read/json?num=30';
+      var endpoint = getEndpoint(params);
 
-      $http.get(endpoint)
-        .succes(function(response){
-          deferred.resolve(data);
+      $http.jsonp(endpoint)
+        .success(function(data){
+          deferred.resolve(data.response);
         })
         .error(function(error){
           deferred.reject(error);

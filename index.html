@@ -7,6 +7,7 @@
   <link href='css/style.css' rel='stylesheet' type='text/css'>
   <link href="bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet" type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
 
 </head>
 <body ng-controller="MainCtrl">
@@ -16,10 +17,21 @@
 
 <div class="search-container">
   <h2>Enter the name of tumblr</h2>
-  <form ng-submit="findPosts()">
-   <input type="text" ng-model="name" placeholder="'tumblr-quotes'">
+  <form ng-submit="loadPosts()">
+   <input type="text" ng-model="blogName" placeholder="tumblr-quotes">
    <button>Find Posts</button>
 </form>
+
+<div class="blog-post-container">
+  <h2 class="blog-title">{{blog.title}}</h2>
+  <ul class="blog-post-list"> 
+    <li ng-repeat="post in posts track by $index">
+    </li>
+  </ul>
+
+</div>
+
+<!-- infinite-scroll="loadMoreArticles(sort, true)" infinite-scroll-disabled="waiting" infinite-scroll-distance="1" -->
 </div>
 
 

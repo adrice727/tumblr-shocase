@@ -2,17 +2,26 @@ angular.module('tumblr')
   .controller('MainCtrl', function ($scope, ApiService) {
 
     $scope.posts = [];
+    var currentBlog = ''
+    var offset = 0;
+    var waiting = false;
 
-    $scope.findPosts = function() {
+    $scope.loadPosts = function(scroll) {
+
+      // Load called by infinite scroll
+      if ( scroll ) {
+        offset += 20;
+      } else {
+        offset = 0;
+      }
       
-      ApiService.fetchPosts($scope.name).then(
+      ApiService.fetchPosts({blog: $scope.blogName, offset: offset}).then(
         function(data){
-
+          console.log('data HEREHEHR', data);
         },
         function(error){
 
         })
+
     }
-
-
   });

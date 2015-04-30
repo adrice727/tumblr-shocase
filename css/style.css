@@ -1,7 +1,7 @@
 
 body {
   margin: 0;
-  font-family: 'Poiret One', cursive;
+  font-family: 'Shadows Into Light', cursive;
 }
 
 input {
@@ -20,7 +20,7 @@ button {
   width: 200px;
   color: rgb(255, 255, 255);
   background-color: rgb(236, 33, 39);
-  font-family: 'Poiret One', cursive;
+  font-family: 'Shadows Into Light', cursive;
   line-height: 30px;
   font-size: 18px;
   border: none;

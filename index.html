@@ -4,48 +4,55 @@
   <meta charset="UTF-8">
   <title>Tumblr Shocase</title>
 
-  <link href='css/style.css' rel='stylesheet' type='text/css'>
   <link href="bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet" type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+  <link href='css/style.css' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light|Raleway' rel='stylesheet' type='text/css'>
 
 </head>
 <body ng-controller="MainCtrl">
 
+<div class="header">
 
-<div class="banner">Tumblr Shocase</div>
+  <div class="banner">Tumblr Shocase</div>
 
-<div class="search-container">
-  <h2>Enter the name of a tumblr</h2>
-  <form ng-submit="loadPosts()">
-    <input type="text" ng-model="searchText" placeholder="tumblr-quotes">
-    <button>Find Posts</button>
-  </form>
+  <div class="search-container">
+    <!-- <h2>Enter the name of a tumblr</h2> -->
+    <form ng-submit="loadPosts()">
+      <input type="text" ng-model="searchText" placeholder="Enter a Tumblr like 'colorwheelie'">
+      <button class="search">Find Posts</button>
+    </form>
+  </div>
+  
 </div>
 
+
+
 <div class="blog-post-container">
+  <i class="fa fa-tumblr-square" ng-hide="blog.title"></i>
   <h1 class="blog-title">{{blog.title}}</h1>
-  <h4 class="blog-url">{{blog.url}}</h4>
   <ul class="blog-post-list"
       infinite-scroll="loadPosts(true)" 
       infinite-scroll-disabled="waiting" 
-      infinite-scroll-distance="2"> 
+      infinite-scroll-distance="0.5"> 
     <li class="blog-post-list-item" ng-repeat="post in blog.posts track by $index">
-      <a ng-href="{{post.post_url}}" target="_blank">
-        <h3 class="blog-post-title">{{post.slug}}</h3>
-        <img class="blog-post-image" ng-src="{{post.photos[0].alt_sizes[0].url}}" alt="post_image">
+      <a ng-href="{{post.url}}" target="_blank">
+        <div class="blog-post-info">
+          <h3 class="blog-post-title">{{post['photo-caption']}}</h3>
+          <h4 class="blog-post-date">{{post.date | amCalendar}}</h4>
+        </div>
+        <img  class="blog-post-image" 
+              
+              ng-src="{{post['photo-url-400']}}" alt="post_image">
       </a>
     </li>
   </ul>
 </div>
 
-<!-- infinite-scroll="loadMoreArticles(sort, true)" infinite-scroll-disabled="waiting" infinite-scroll-distance="1" -->
-
-
-
 <!-- Bower Components -->
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/angular-moment/angular-moment.min.js"></script>
 
 <!-- JavaScript -->
 <script src="app.js"></script>

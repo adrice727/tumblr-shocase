@@ -1,1 +1,1 @@
-angular.module('tumblr', ['infinite-scroll']);
+angular.module('tumblr', ['infinite-scroll', 'angularMoment']);

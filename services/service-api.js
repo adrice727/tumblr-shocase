@@ -3,35 +3,29 @@ angular.module('tumblr')
 
     var ApiService = {};
 
-    function getEndpoint(data){
-
-      var base = 'http://api.tumblr.com/v2/blog/';
-      var blog =  data.blog + '.tumblr.com';
-      var params = '/posts?&callback=JSON_CALLBACK' + '&limit=9&offset=' + data.offset;
-      var key = '&api_key=0dNpXFzkovKe7qBnN0hNoVaU7ArLUnCFARNALGgWv36NzxOQAS';
-
-      return base + blog + params + key;
-
-    }
-
     ApiService.fetchPosts = function(params){
 
       var deferred = $q.defer();
-
       var endpoint = getEndpoint(params);
-
-      console.log(endpoint);
 
       $http.jsonp(endpoint)
         .success(function(data){
-          deferred.resolve(data.response);
+          deferred.resolve(data);
         })
         .error(function(error){
+          console.log('xoxoxo', error);
           deferred.reject(error);
         })
 
       return deferred.promise;
+    }
 
+    function getEndpoint(data){
+
+      var baseUrl = 'http://' + data.blog + '.tumblr.com/api/read/json?&callback=JSON_CALLBACK';
+      var params = '&filter=text&num=9&start=' + data.offset;
+
+      return baseUrl + params;
     }
 
     return ApiService;

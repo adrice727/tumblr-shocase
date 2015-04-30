@@ -12,7 +12,7 @@ input {
   font-size: 16px;
   line-height: 25px;
   padding: 0 5px;
-
+  font-family: 'Raleway', sans-serif;
 }
 
 button {
@@ -30,6 +30,14 @@ button {
 
 h1, h2, h3, h4 {
   margin: 0;
+}
+
+.header {
+  position: fixed;
+  height: 135px;
+  top: 0;
+  width: 100%;
+  z-index: 10;
 }
 
 .banner {
@@ -52,7 +60,15 @@ h1, h2, h3, h4 {
 }
 
 .blog-post-container {
+  position: relative;
+  top: 135px;
   text-align: center;
+}
+
+.fa-tumblr-square {
+  font-size: 36px;
+  position: fixed;
+  bottom: 25px;
 }
 
 .blog-title {
@@ -61,22 +77,46 @@ h1, h2, h3, h4 {
 
 .blog-post-list {
   list-style-type: none;
+  width: 95%;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .blog-post-list-item {
   display: inline-block;
-  width: 30%;
-  min-width: 200px;
-  height: 250px;
-  float: left;
+  box-sizing: border-box;
+  width: calc(33.3% - 20px);
+  min-width: 300px;
   margin: 10px;
+  vertical-align: top;
   border: 1px solid rgb(0, 0, 0);
+}
+
+.blog-post-list-item * {
+  font-family: 'Raleway', sans-serif;
+}
+
+.blog-link, .blog-post-list-item a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.blog-post-info {
+  text-align: left;
+  padding: 5px 10px;
+}
+
+.blog-post-title {
+  /*height: 45px;*/
+}
+
+.blog-post-date {
+  color: rgb(119, 119, 119);
 }
 
 .blog-post-image {
   height: 150px;
   width: auto;
 }
-
-
 

@@ -16,23 +16,31 @@
 <div class="banner">Tumblr Shocase</div>
 
 <div class="search-container">
-  <h2>Enter the name of tumblr</h2>
+  <h2>Enter the name of a tumblr</h2>
   <form ng-submit="loadPosts()">
-   <input type="text" ng-model="blogName" placeholder="tumblr-quotes">
-   <button>Find Posts</button>
-</form>
+    <input type="text" ng-model="searchText" placeholder="tumblr-quotes">
+    <button>Find Posts</button>
+  </form>
+</div>
 
 <div class="blog-post-container">
-  <h2 class="blog-title">{{blog.title}}</h2>
-  <ul class="blog-post-list"> 
-    <li ng-repeat="post in posts track by $index">
+  <h1 class="blog-title">{{blog.title}}</h1>
+  <h4 class="blog-url">{{blog.url}}</h4>
+  <ul class="blog-post-list"
+      infinite-scroll="loadPosts(true)" 
+      infinite-scroll-disabled="waiting" 
+      infinite-scroll-distance="2"> 
+    <li class="blog-post-list-item" ng-repeat="post in blog.posts track by $index">
+      <a ng-href="{{post.post_url}}" target="_blank">
+        <h3 class="blog-post-title">{{post.slug}}</h3>
+        <img class="blog-post-image" ng-src="{{post.photos[0].alt_sizes[0].url}}" alt="post_image">
+      </a>
     </li>
   </ul>
-
 </div>
 
 <!-- infinite-scroll="loadMoreArticles(sort, true)" infinite-scroll-disabled="waiting" infinite-scroll-distance="1" -->
-</div>
+
 
 
 <!-- Bower Components -->

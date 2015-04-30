@@ -6,9 +6,9 @@ angular.module('tumblr')
     function getEndpoint(data){
 
       var base = 'http://api.tumblr.com/v2/blog/';
-      var blog =  data.blog + '.tumblr.com'
-      var params = '/posts?&callback=JSON_CALLBACK' + '&limit=15&offset=' + data.offset;
-      var key = '&api_key=0dNpXFzkovKe7qBnN0hNoVaU7ArLUnCFARNALGgWv36NzxOQAS'
+      var blog =  data.blog + '.tumblr.com';
+      var params = '/posts?&callback=JSON_CALLBACK' + '&limit=9&offset=' + data.offset;
+      var key = '&api_key=0dNpXFzkovKe7qBnN0hNoVaU7ArLUnCFARNALGgWv36NzxOQAS';
 
       return base + blog + params + key;
 
@@ -19,6 +19,8 @@ angular.module('tumblr')
       var deferred = $q.defer();
 
       var endpoint = getEndpoint(params);
+
+      console.log(endpoint);
 
       $http.jsonp(endpoint)
         .success(function(data){

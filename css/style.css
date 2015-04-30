@@ -6,7 +6,7 @@ body {
 
 input {
   display: block;
-  margin: 10px auto;
+  margin: 5px auto;
   height: 25px;
   width: 300px;
   font-size: 16px;
@@ -18,6 +18,7 @@ input {
 button {
   height: 30px;
   width: 200px;
+  margin: 5px 0;
   color: rgb(255, 255, 255);
   background-color: rgb(236, 33, 39);
   font-family: 'Shadows Into Light', cursive;
@@ -27,20 +28,55 @@ button {
   border-radius: 5px;
 }
 
+h1, h2, h3, h4 {
+  margin: 0;
+}
+
 .banner {
-  height: 40px;
+  height: 30px;
   width: 100%;
   color: rgb(255, 255, 255);
   background-color: rgb(40, 40, 41);
   border-top: 2px solid rgb(236, 33, 39);
   font-size: 24px;
-  line-height: 40px;
+  line-height: 30px;
   padding: 5px 20px;
 }
 
 .search-container {
   padding: 5px 0;
   text-align: center;
-  border-bottom: 1px solid rgb(0,0,0);
+  border-bottom: 1px solid rgb(0, 0, 0);
+  background-color: rgb(231, 231, 231);
+  padding-top: 5px;
 }
+
+.blog-post-container {
+  text-align: center;
+}
+
+.blog-title {
+  color: rgb(236, 33, 39)
+}
+
+.blog-post-list {
+  list-style-type: none;
+}
+
+.blog-post-list-item {
+  display: inline-block;
+  width: 30%;
+  min-width: 200px;
+  height: 250px;
+  float: left;
+  margin: 10px;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.blog-post-image {
+  height: 150px;
+  width: auto;
+}
+
+
 
